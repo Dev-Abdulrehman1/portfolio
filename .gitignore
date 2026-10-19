@@ -1,0 +1,8 @@
+node_modules
+dist
+.vercel
+.freebuff
+preview
+.DS_Store
+*.tsbuildinfo
+*.log
