@@ -7,12 +7,12 @@ const dist = resolve("dist");
 let html = readFileSync(resolve(dist, "index.html"), "utf8");
 
 html = html.replace(
-  /<script type="module" crossorigin src="\.\/([^"]+)"><\/script>/,
+  /<script type="module" crossorigin src="(?:\/|\.\/)(assets\/[^"]+)"><\/script>/,
   (_, src) => `<script type="module">\n${readFileSync(resolve(dist, src), "utf8")}\n</script>`,
 );
 
 html = html.replace(
-  /<link rel="stylesheet" crossorigin href="\.\/([^"]+)">/,
+  /<link rel="stylesheet" crossorigin href="(?:\/|\.\/)(assets\/[^"]+)">/,
   (_, href) => `<style>\n${readFileSync(resolve(dist, href), "utf8")}\n</style>`,
 );
 
