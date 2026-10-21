@@ -43,6 +43,40 @@ export const skills = [
 
 const publicProjects: Project[] = [
   {
+    slug: "roomkit",
+    title: "Roomkit",
+    tagline: "Drop a colour on a wall and get the room back, repainted",
+    description: [
+      "Roomkit takes a photo of a room and repaints the walls you pick. Drop a colour on a wall, press Render, and roughly a minute later the same room comes back in that colour — furniture, window light, perspective and shadows untouched.",
+      "The backend is FastAPI calling an image model through OpenRouter (ByteDance Seedream 5.0 Flash). Every colour the user marked travels in a single request with the original photo, so a room costs one billed image instead of one per wall, and the prompt pins the exact hex values while forbidding changes to anything that is not a named wall.",
+      "History is a SQLite file with the before and after images stored beside it, so past renders survive restarts and open straight from a URL. A cache keyed on the photo and its paints answers a repeat render for free, an access-key gate keeps the billed endpoint behind a cookie, and the Next.js frontend reaches Python through a same-origin /api rewrite — no CORS, and no key in the browser.",
+      "It runs on a VPS as two systemd services behind nginx and Cloudflare, with the Python API bound to loopback so only the frontend can reach it.",
+    ],
+    role: "Solo developer",
+    year: "2026",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "FastAPI",
+      "OpenRouter",
+      "SQLite",
+    ],
+    features: [
+      "Drop-in colour marking on the photo, mouse and touch, with undo and an eight-wall cap",
+      "One billed image per room: every chosen hex travels in a single model call",
+      "Render history in SQLite with both images, cost, and elapsed time per generation",
+      "Cache keyed on photo plus paints, so the same room renders again for free",
+      "Access-key gate with a 30-day cookie on the endpoint that costs money",
+      "Same-origin /api rewrite keeps the Python origin out of the browser",
+    ],
+    repoUrl: "https://github.com/Dev-Abdulrehman1/Roomkit",
+    liveUrl: "https://roomkit.scriptro.com",
+    accent: "from-orange-400/40 via-rose-500/20 to-amber-300/30",
+    image: "/projects/roomkit.svg",
+    featured: true,
+  },
+  {
     slug: "voice-engine",
     title: "Voice Engine",
     tagline: "Turn a script into natural speech, straight from the browser",
@@ -87,6 +121,7 @@ const publicProjects: Project[] = [
     ],
     accent: "from-violet-400/40 via-fuchsia-500/20 to-pink-300/30",
     image: "/projects/ai-studio-site.svg",
+    featured: true,
   },
 ];
 
